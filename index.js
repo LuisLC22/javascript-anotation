@@ -112,6 +112,7 @@ carlos.greet()
 function Person(name){
   const person= Object.create(Person.prototype)
   person.name = name
+
   return person
 }
 
@@ -126,34 +127,40 @@ const carlos = Person('Carlos')
 carlos.greet()
 
 
-
-
-//2.5 Construct Funciton NEW
-function Person(name, gender){
+/**
+ *Case 6 Usign the keyword "new"
+ */
+function Person(name){
+  //this = Object.create(Person.prototype)  //Eso solo es posible por el lenguaje
   this.name = name
-  this.gender= gender
+  //return person
 }
 
-Person.prototype.speak= function(){
-  console.log(`I'm ${this.name} and my gender is ${this.gender}`)
+Person.prototype.greet= function(){
+  console.log(`Hi nice to meet you, I\'m ${this.name}`)
 }
 
-let Victoria = new Person('Victoria','Female')
-Victoria.speak();
+const luis = new Person('Luis')
+luis.greet()
+const carlos = new Person('Carlos')
+carlos.greet()
 
 
-
-//3
+/**
+ * Case 7 Usign Class the best sugar sintax
+ */
 class Person{
   constructor(name, gender){
     this.name= name
     this.gender= gender
   }
 
-  speak(){
-    console.log(`I'm ${this.name} and my gender is ${this.gender}`)
+  greet(){
+    console.log(`Hi nice to meet you, I\'m ${this.name}`)
   }
 }
 
-let Victoria= new Person('Victoria','Female')
-Victoria.speak()
+const luis = new Person('Luis')
+luis.greet()
+const carlos = new Person('Carlos')
+carlos.greet()
